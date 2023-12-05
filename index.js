@@ -3,11 +3,7 @@ import dotenv from 'dotenv'
 import { MainRouter } from './routes/router.js'
 import { Sequelize, DataTypes } from 'sequelize';
 
-const sequelize = new Sequelize('sqlite::memory:');
-const User = sequelize.define('User', {
-  username: DataTypes.STRING,
-  birthday: DataTypes.DATE,
-});
+
 
 const app = express()
 app.listen(4000, () => {
