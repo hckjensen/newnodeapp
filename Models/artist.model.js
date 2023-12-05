@@ -19,10 +19,6 @@ Artist.init({
       description: {
         type: DataTypes.TEXT,
         allowNull: false
-      },
-      is_active: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
       }
   }, {
     sequelize,
