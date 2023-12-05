@@ -20,8 +20,8 @@ Song.init({
         type: DataTypes.TEXT,
         allowNull: false
       },
-      artist: {
-        type: DataTypes.STRING,
+      artist_id: {
+        type: DataTypes.INTEGER,
         allowNull: false
       }
   }, {
