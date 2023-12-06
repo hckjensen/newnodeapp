@@ -24,7 +24,7 @@ router.post('/song/create', (req, res) => {
     controller.create(req, res);
 });
 
-router.put('/song/update', (req, res) => {
+router.put('/song/update/:id([0-9]*)', (req, res) => {
     controller.update(req, res);
 });
 

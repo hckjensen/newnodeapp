@@ -38,45 +38,67 @@ export default class SongController {
           new_id: result.id,
         });
       } catch (error) {
-        res.send(error);
-        console.log(error);
+        console.error("Error creating song:", error);
+        res.status(500).json({
+          message: "Internal server error",
+        });
       }
+    else {
+      console.error("Missing required parameters");
+      res.status(400).json({
+        message: "Missing required parameters",
+      });
+    }
   };
 
   //UPDATE ROW
   update = async (req, res) => {
-    const { title, content, artist_id} = req.body;
+    const { title, content, artist_id } = req.body;
+    const { id } = req.params;
 
-    if(title && content && artist_id)
+    if (title && content && artist_id) {
+      try {
+        const result = await Song.update(
+          {
+            title: title,
+            content: content,
+            artist_id: artist_id,
+          },
+          {
+            where: { id: id },
+          }
+        );
 
-        try {
-            const result = await Song.update(req.body)
-            res.json({
-                message: "song updated"
-            })
-        } catch (error) {
-            res.send(error);
-            console.log(error);
-        };
+        res.json({
+          message: "song updated",
+          new_title: title,
+          new_content: content,
+          new_artist_id: artist_id,
+        });
+      } catch (error) {
+        res.send(error);
+        console.log(error);
+      }
+    } else {
+      res.status(400).json({
+        message: "Missing required parameters",
+      });
+    }
   };
 
   //DELETE ROW
   remove = async (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
-    try{
-        await Song.destroy({
-            where: { id: id }
-        });
-        res.status(200).send({
-            message: "Song Deleted"
-        });
+    try {
+      await Song.destroy({
+        where: { id: id },
+      });
+      res.status(200).send({
+        message: "Song Deleted",
+      });
     } catch (error) {
-        res.send(error);
-    };
+      res.send(error);
+    }
   };
-
-
-
-
-}; //Controller end
+}
