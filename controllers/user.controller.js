@@ -83,6 +83,9 @@ export default class UserController {
         new_id: result.id,
       });
     } catch (error) { //runs if wrong DATATYPE is entered in the form body. i.e invalid date of birth or text entered in interger field, etc.
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        return res.status(400).json({ error: 'User Already Exists' });
+    }
       console.error("Error creating user:", error);
       res.status(500).json({
         message: "Internal Server Error",

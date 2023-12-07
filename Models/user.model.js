@@ -24,6 +24,7 @@ User.init(
     username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     password: {
         type: DataTypes.STRING,
@@ -36,10 +37,12 @@ User.init(
     email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     phone: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
     },
     date_of_birth: {
         type: DataTypes.DATEONLY,

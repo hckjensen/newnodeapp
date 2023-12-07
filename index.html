@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Songbook</title>
     <link rel="stylesheet" href="/css/index.css">
+    <script src="/script/formvalidate.js" defer></script>
+    <script src="/script/landing.js" defer></script>
 </head>
 <body>
-    <div class="container">
+    <div class="landing" id="landing">
+        <h1>Welcome!</h1>
+        <p>Please Sign in or create an account!</p>
+        <div class="button_container">
+            <div class="signup" id="signUpButton">Sign Up</div>
+            <div class="login" id="signInButton">Sign In</div>
+        </div>
+        
+    </div>
+
+    <div class="container" id="signUpContainer">
         <h1>Create Account</h1>
         <form action="http://localhost:4000/user/create" method="post" id="signUpForm">
             <div class="signupInput">
@@ -24,11 +36,11 @@
             </div>
             <div class="signupInput">
                 <label for="password">Password</label>
-                <input type="text" id="password" name="password">
+                <input type="password" id="password" name="password">
             </div>
             <div class="signupInput">
                 <label for="repeatpassword">Repeat Password</label>
-                <input type="text" id="repeatpassword" name="repeatpassword">
+                <input type="password" id="repeatpassword" name="repeatpassword">
             </div>
             <div class="signupInput">
                 <label for="email">Email</label>
