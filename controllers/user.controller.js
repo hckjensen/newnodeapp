@@ -149,6 +149,9 @@ export default class UserController {
         await User.destroy({
             where: {id: id},
         });
+        res.status(200).send({
+          message: "User Deleted",
+        });
     } catch (error) {
         res.send(error)
     };

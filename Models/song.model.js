@@ -1,5 +1,6 @@
 import sequelize from '../config/db.sequelize.js';
 import { DataTypes, Model } from 'sequelize';
+import Artist from './artist.model.js';
 
 
 class Song extends Model { };
@@ -22,7 +23,10 @@ Song.init({
       },
       artist_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references:  {
+          model: Artist
+        }
       }
   }, {
     sequelize,
@@ -33,5 +37,11 @@ Song.init({
     updatedAt: false, // Udelad updateddAt felt
     timestamps: false // Undgå både createdAt og updatedAt felter
   });
+
+  Song.belongsTo(Artist, {
+    foreignKey: 'artist_id',
+    as: 'artist', // alias for the association
+  });
+  
 
   export default Song

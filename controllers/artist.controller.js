@@ -1,4 +1,9 @@
 import Artist from "../Models/artist.model.js";
+import Song from "../Models/song.model.js";
+Artist.hasMany(Song, {
+    foreignKey: 'artist_id',
+    as: 'songs', // alias for the association
+  });
 
 export default class ArtistController {
   //List all artists
@@ -18,6 +23,12 @@ export default class ArtistController {
     try {
       const result = await Artist.findOne({
         where: { id: id },
+        include: {
+            model: Song,
+            attributes: ['title'],
+            as: "songs"
+        }
+        
       });
       res.json(result);
     } catch (error) {

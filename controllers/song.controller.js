@@ -1,10 +1,18 @@
 import Song from "../Models/song.model.js";
+import Artist from '../Models/artist.model.js';
+Song.belongsTo(Artist);
+
 
 export default class SongController {
   //List all songs
   list = async (req, res) => {
     try {
-      const result = await Song.findAll();
+      const result = await Song.findAll({
+        include: {
+            model: Artist,
+            attributes: ['name']
+        }
+      });
       res.json(result);
     } catch (error) {
       res.send(error);
@@ -18,6 +26,10 @@ export default class SongController {
     try {
       const result = await Song.findOne({
         where: { id: id },
+        include: {
+            model: Artist,
+            attributes: ['name']
+        }
       });
       res.json(result);
     } catch (error) {

@@ -1,5 +1,7 @@
 import sequelize from '../config/db.sequelize.js';
 import { DataTypes, Model } from 'sequelize';
+import Song from './song.model.js';
+
 
 
 class Artist extends Model { };
@@ -15,11 +17,8 @@ Artist.init({
       name: {
         type: DataTypes.STRING,
         allowNull: false
-      },
-      description: {
-        type: DataTypes.TEXT,
-        allowNull: false
       }
+      
   }, {
     sequelize,
     modelName: 'artist', // Modellens navn
@@ -29,5 +28,8 @@ Artist.init({
     updatedAt: false, // Udelad updateddAt felt
     timestamps: false // Undgå både createdAt og updatedAt felter
   });
+
+  
+  
 
   export default Artist

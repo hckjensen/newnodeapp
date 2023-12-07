@@ -27,7 +27,7 @@ router.put('/artist/update', (req, res) => {
     controller.update(req, res);
 });
 
-router.delete('/artost/delete/:id([0-9]*)', (req, res) => {
+router.delete('/artist/delete/:id([0-9]*)', (req, res) => {
     controller.remove(req, res);
 });
 
