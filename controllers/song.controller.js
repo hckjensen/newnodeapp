@@ -27,8 +27,7 @@ export default class SongController {
       const result = await Song.findOne({
         where: { id: id },
         include: {
-            model: Artist,
-            attributes: ['name']
+            model: Artist
         }
       });
       res.json(result);
