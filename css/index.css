@@ -84,7 +84,7 @@ body {
   left: 7px;
   width: 110%;
 }
-.container #signUpForm .signupInput input, #signUpContainer #signUpForm .signupInput input {
+.container #signUpForm .signupInput input, .container #signUpForm .signupInput select, #signUpContainer #signUpForm .signupInput input, #signUpContainer #signUpForm .signupInput select {
   height: 30px;
   width: 300px;
   padding: 10px;
@@ -95,11 +95,19 @@ body {
   border: none;
   border-radius: 20px;
 }
-.container #signUpForm .signupInput input:focus, #signUpContainer #signUpForm .signupInput input:focus {
+.container #signUpForm .signupInput input:focus, .container #signUpForm .signupInput select:focus, #signUpContainer #signUpForm .signupInput input:focus, #signUpContainer #signUpForm .signupInput select:focus {
   outline: none;
   scale: 1.03;
   transition: 200ms;
   border: 2px white solid;
+}
+.container #signUpForm .signupInput select, #signUpContainer #signUpForm .signupInput select {
+  padding: 0;
+  padding-left: 10px;
+}
+.container #signUpForm .signupInput select option, #signUpContainer #signUpForm .signupInput select option {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
 }
 .container #signUpForm button, #signUpContainer #signUpForm button {
   display: flex;
