@@ -1,4 +1,5 @@
 
+
 import express from 'express'
 import sequelize from "../config/db.sequelize.js";
 
@@ -16,7 +17,6 @@ router.get('/', (req,res) => {
     })()
     res.send('Velkommen')
 });
-
 
 
 
